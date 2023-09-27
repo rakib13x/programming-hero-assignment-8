@@ -27,3 +27,36 @@ const Cards = () => {
 };
 
 export default Cards;
+
+const handleDonateClick = (card) => {
+  if (!card) {
+    toast.error("Card data not available. Cannot donate.");
+  } else {
+    const price = parseFloat(card.price.replace("$", ""));
+    const updatedTotalDonation = totalDonationAmount - price;
+
+    if (updatedTotalDonation < 0) {
+      toast.error("Not enough funds for donation.");
+    } else {
+      setTotalDonationAmount(updatedTotalDonation);
+
+      const donationDetails = {
+        cardId: card.id,
+        amount: price,
+        timestamp: new Date().toISOString(),
+      };
+
+      const existingDonations =
+        JSON.parse(localStorage.getItem("donations")) || [];
+
+      const updatedDonations = [...existingDonations, donationDetails];
+
+      localStorage.setItem("donations", JSON.stringify(updatedDonations));
+
+      setYourDonation((prevDonation) => prevDonation + price);
+      setDonations(updatedDonations);
+
+      toast.success(`Donation successful! Thank you for donating $${price}.`);
+    }
+  }
+};

@@ -1,32 +1,12 @@
 // Hero.jsx
 import React, { useState } from "react";
 
-const Hero = ({ cards = [] }) => {
+const Hero = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryQuery, setCategoryQuery] = useState("");
-  const [filteredCards, setFilteredCards] = useState(cards);
-  const handleTitleSearchInputChange = (e) => {
-    const query = e.target.value.toLowerCase();
 
-    const filtered = cards.filter((card) =>
-      card.title.toLowerCase().includes(query)
-    );
-
-    setSearchQuery(query);
-    setCategoryQuery("");
-    setFilteredCards(filtered);
-  };
-
-  const handleCategorySearchInputChange = (e) => {
-    const query = e.target.value.toLowerCase();
-
-    const filtered = cards.filter((card) =>
-      card.category.toLowerCase().includes(query)
-    );
-
-    setCategoryQuery(query);
-    setSearchQuery("");
-    setFilteredCards(filtered);
+  const handleSearch = () => {
+    onSearch(searchQuery, categoryQuery);
   };
 
   return (
@@ -41,9 +21,12 @@ const Hero = ({ cards = [] }) => {
             className="border border-gray-300 h-9 w-[260px] rounded-l p-2"
             placeholder="Search by category..."
             value={categoryQuery}
-            onChange={handleCategorySearchInputChange}
+            onChange={(e) => setCategoryQuery(e.target.value)}
           />
-          <button className="h-9 w-[80px] rounded-r bg-red-500 text-white">
+          <button
+            className="h-9 w-[80px] rounded-r bg-red-500 text-white"
+            onClick={handleSearch}
+          >
             Search
           </button>
         </div>
