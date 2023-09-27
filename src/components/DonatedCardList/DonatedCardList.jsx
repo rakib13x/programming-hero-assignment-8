@@ -1,17 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useHistory
 import { useDonationContext } from "../../DonationContext"; // Import the context hook
 
 const DonatedCardList = ({ cardList }) => {
   const { donatedCards, setDonatedCards, totalDonation, setTotalDonation } =
     useDonationContext();
+  // State to track whether to show all cards
+  const navigate = useNavigate();
   console.log("Total Donation:", totalDonation);
   console.log("Donated Cards:", donatedCards);
+
   useEffect(() => {
     const calculateDonationForItem = (item) => {
       const itemPrice = parseFloat(item.price.replace("$", ""));
-
       const donationAmount = itemPrice * 0.1;
-
       return donationAmount;
     };
 
@@ -31,6 +33,11 @@ const DonatedCardList = ({ cardList }) => {
     setTotalDonation(newTotalDonation);
   }, [setDonatedCards, setTotalDonation]);
 
+  // Function to navigate to the donation page with the card's ID
+  const handleViewDetailsClick = (cardId) => {
+    navigate(`/donation-page/${cardId}`);
+  };
+
   return (
     <div>
       <div className="card card-side bg-base-100 shadow-md">
@@ -43,7 +50,10 @@ const DonatedCardList = ({ cardList }) => {
           </button>
           <h2 className="card-title">title</h2>
           <div className="card-actions justify-start">
-            <button className="justify-center items-center w-[141px] h-[40px] bg-red-500 rounded">
+            <button
+              className="justify-center items-center w-[141px] h-[40px] bg-red-500 rounded"
+              onClick={() => handleViewDetailsClick(cardList.id)}
+            >
               View Details
             </button>
           </div>

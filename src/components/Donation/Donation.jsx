@@ -3,27 +3,43 @@ import DonatedCardList from "../DonatedCardList/DonatedCardList";
 
 const Donation = () => {
   const [donatedCards, setDonatedCards] = useState([]);
-  console.log(donatedCards);
+  const [showAllCards, setShowAllCards] = useState(false);
 
   useEffect(() => {
     const storedDonatedCards = JSON.parse(localStorage.getItem("donatedCards"));
     if (storedDonatedCards) {
       setDonatedCards(storedDonatedCards);
     }
-    console.log(storedDonatedCards);
   }, []);
+
+  const handleSeeAllClick = () => {
+    setShowAllCards(!showAllCards); // Toggle showAllCards
+  };
 
   return (
     <div>
-      <h2 className="flex justify-center pt-10 text-3xl font-bold border-b">
+      <h2 className="flex justify-center items-center pt-10 text-3xl font-bold border-b">
         Donated Cards
       </h2>
       <div className="md:max-w-[1400px] max-w-[600px] m-auto w-full mt-6 pl-6">
         <div className="grid md:grid-cols-2 px-10 gap-10">
-          {donatedCards.map((cardList, index) => (
-            <DonatedCardList key={index} cardList={cardList} />
-          ))}
+          {donatedCards
+            .slice(0, showAllCards ? donatedCards.length : 4) // Slice the array to show only the first 4 or all cards
+            .map((cardList, index) => (
+              <DonatedCardList key={index} cardList={cardList} />
+            ))}
         </div>
+      </div>
+      {/* Render "See All" button if there are more than 4 cards */}
+      <div className="flex justify-center">
+        {donatedCards.length > 4 && (
+          <button
+            onClick={handleSeeAllClick}
+            className="flex justify-center items-center text-white w-[141px] h-[40px] bg-blue-500 rounded left-[600px]"
+          >
+            {showAllCards ? "Show Less" : "See All"}
+          </button>
+        )}
       </div>
     </div>
   );

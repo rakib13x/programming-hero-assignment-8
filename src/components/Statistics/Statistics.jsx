@@ -39,27 +39,42 @@ const Statistics = () => {
     { name: "Group B", value: 500 },
   ];
 
-  const COLORS = ["#0088FE", "#00C49F"];
+  const COLORS = ["#00C49F", "#FF444A"];
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <PieChart width={400} height={400}>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          label={renderCustomizedLabel}
-          outerRadius={80}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-      </PieChart>
-    </ResponsiveContainer>
+    <>
+      <ResponsiveContainer width="100%" height={600}>
+        <PieChart width={400} height={400}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+      <div>
+        <div className="flex items-center justify-center gap-4 ">
+          <p> Total Donation:</p>
+          <div className="h-2 w-[160px] bg-red-500 rounded"></div>
+        </div>
+        <div className="flex items-center justify-center gap-4 pb-[380px]">
+          <p> Your Donation:</p>
+          <div className="h-2 w-[160px] bg-green-500 rounded"></div>
+        </div>
+      </div>
+    </>
   );
 };
 

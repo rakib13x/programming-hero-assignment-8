@@ -1,12 +1,16 @@
 // Hero.jsx
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const Hero = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryQuery, setCategoryQuery] = useState("");
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     onSearch(searchQuery, categoryQuery);
+
+    // Navigate back to the Home route
+    navigate("/");
   };
 
   return (
