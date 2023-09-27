@@ -29,14 +29,11 @@ const renderCustomizedLabel = ({
 };
 
 const Statistics = () => {
-  const { totalDonation, donatedCards, setTotalDonation, setTotalDonated } =
-    useDonationContext();
-  console.log(totalDonation, donatedCards);
+  const { totalDonation, donatedCards } = useDonationContext();
 
-  console.log(totalDonation);
   const data = [
     { name: "Group A", value: totalDonation },
-    { name: "Group B", value: 700 },
+    { name: "Group B", value: donatedCards },
   ];
 
   const COLORS = ["#00C49F", "#FF444A"];
