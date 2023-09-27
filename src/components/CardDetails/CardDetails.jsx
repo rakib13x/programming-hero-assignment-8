@@ -20,7 +20,7 @@ const CardDetails = ({ card }) => {
         >
           <h2 className="card-title ">
             <div
-              className="badge rounded-none "
+              className="badge rounded "
               style={{
                 backgroundColor: card.category_bg_color,
                 color: card.text_button_bg_color,
@@ -29,7 +29,12 @@ const CardDetails = ({ card }) => {
               {card.category}
             </div>
           </h2>
-          <p className="font-semibold">{card.title}</p>
+          <p
+            className="font-semibold"
+            style={{ color: card.text_button_bg_color }}
+          >
+            {card.title}
+          </p>
         </div>
       </div>
     </Link>

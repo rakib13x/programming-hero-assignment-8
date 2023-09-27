@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import DonatedCardList from "../DonatedCardList/DonatedCardList";
+import { useParams } from "react-router-dom";
 
 const Donation = () => {
+  const { id } = useParams();
+  console.log(id);
   const [donatedCards, setDonatedCards] = useState([]);
   const [showAllCards, setShowAllCards] = useState(false);
 
@@ -31,7 +34,7 @@ const Donation = () => {
         </div>
       </div>
       {/* Render "See All" button if there are more than 4 cards */}
-      <div className="flex justify-center">
+      <div className="flex justify-center pt-6">
         {donatedCards.length > 4 && (
           <button
             onClick={handleSeeAllClick}

@@ -6,7 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 const DonationPage = () => {
   const cardsData = useLoaderData();
   const { id } = useParams();
+  console.log(id);
   const cardData = cardsData.find((cardData) => cardData.id == id);
+  console.log(cardData.text_button_bg_color);
   const backgroundImageUrl = cardData ? cardData.picture : "";
 
   const [donated, setDonated] = useState(false);
@@ -34,10 +36,6 @@ const DonationPage = () => {
     localStorage.setItem("donatedCards", JSON.stringify(donatedCards));
   };
 
-  const buttonClasses = `btn btn-primary absolute left-6 bottom-4 z-100${
-    bgBlack ? " bg-black" : ""
-  }`;
-
   return (
     <div className="md:max-w-[1400px] max-w-[600px] m-auto w-full mt-10 px-14 ">
       <div
@@ -50,7 +48,8 @@ const DonationPage = () => {
           <div className="max-w-md">
             <div className=" absolute left-0 bottom-0 h-20 hero-overlay bg-opacity-60"></div>
             <button
-              className={buttonClasses}
+              className="btn  absolute  left-6 bottom-4 z-100 border-none text-white"
+              style={{ background: cardData.text_button_bg_color }}
               onClick={handleDonateClick}
               disabled={donated}
             >

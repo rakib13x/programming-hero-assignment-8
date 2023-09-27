@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"; // Import useHistory
 import { useDonationContext } from "../../DonationContext"; // Import the context hook
 
 const DonatedCardList = ({ cardList }) => {
+  console.log(cardList);
   const { donatedCards, setDonatedCards, totalDonation, setTotalDonation } =
     useDonationContext();
   // State to track whether to show all cards
@@ -45,13 +46,18 @@ const DonatedCardList = ({ cardList }) => {
           <img src={cardList.picture} alt="Movie" className="h-full" />
         </figure>
         <div className="card-body">
-          <button className="card-actions justify-center items-center bg-red-500 h-[25px] w-[64px] rounded">
-            health
+          <button
+            className="card-actions justify-center items-center h-[25px] w-[64px] rounded text-gray-100"
+            style={{
+              background: cardList.category_bg_color,
+            }}
+          >
+            {cardList.category}
           </button>
-          <h2 className="card-title">title</h2>
+          <h2 className="card-title">{cardList.title}</h2>
           <div className="card-actions justify-start">
             <button
-              className="justify-center items-center w-[141px] h-[40px] bg-red-500 rounded"
+              className="justify-center items-center w-[141px] h-[40px] bg-red-500 rounded text-white"
               onClick={() => handleViewDetailsClick(cardList.id)}
             >
               View Details
