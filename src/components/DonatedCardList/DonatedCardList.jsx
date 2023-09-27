@@ -6,7 +6,6 @@ const DonatedCardList = ({ cardList }) => {
   console.log(cardList);
   const { donatedCards, setDonatedCards, totalDonation, setTotalDonation } =
     useDonationContext();
-  // State to track whether to show all cards
   const navigate = useNavigate();
   console.log("Total Donation:", totalDonation);
   console.log("Donated Cards:", donatedCards);
@@ -34,7 +33,6 @@ const DonatedCardList = ({ cardList }) => {
     setTotalDonation(newTotalDonation);
   }, [setDonatedCards, setTotalDonation]);
 
-  // Function to navigate to the donation page with the card's ID
   const handleViewDetailsClick = (cardId) => {
     navigate(`/donation-page/${cardId}`);
   };

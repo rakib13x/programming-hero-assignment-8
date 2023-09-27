@@ -16,7 +16,7 @@ const Donation = () => {
   }, []);
 
   const handleSeeAllClick = () => {
-    setShowAllCards(!showAllCards); // Toggle showAllCards
+    setShowAllCards(!showAllCards);
   };
 
   return (
@@ -27,13 +27,13 @@ const Donation = () => {
       <div className="md:max-w-[1400px] max-w-[600px] m-auto w-full mt-6 pl-6">
         <div className="grid md:grid-cols-2 px-10 gap-10">
           {donatedCards
-            .slice(0, showAllCards ? donatedCards.length : 4) // Slice the array to show only the first 4 or all cards
+            .slice(0, showAllCards ? donatedCards.length : 4)
             .map((cardList, index) => (
               <DonatedCardList key={index} cardList={cardList} />
             ))}
         </div>
       </div>
-      {/* Render "See All" button if there are more than 4 cards */}
+
       <div className="flex justify-center pt-6">
         {donatedCards.length > 4 && (
           <button

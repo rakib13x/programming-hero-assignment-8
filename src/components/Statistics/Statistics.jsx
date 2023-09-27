@@ -36,7 +36,7 @@ const Statistics = () => {
   console.log(totalDonation);
   const data = [
     { name: "Group A", value: totalDonation },
-    { name: "Group B", value: 500 },
+    { name: "Group B", value: 700 },
   ];
 
   const COLORS = ["#00C49F", "#FF444A"];

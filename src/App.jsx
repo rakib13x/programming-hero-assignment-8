@@ -6,7 +6,7 @@ import Cards from "./components/Cards/Cards";
 import CardDetails from "./components/CardDetails/CardDetails.jsx";
 import DonationPage from "./components/DonationPage/DonationPage";
 import Statistics from "./components/Statistics/Statistics";
-import { DonationProvider } from "./DonationContext"; // Import the context provider
+import { DonationProvider } from "./DonationContext";
 
 function App() {
   return (

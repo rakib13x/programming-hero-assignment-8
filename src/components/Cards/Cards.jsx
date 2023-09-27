@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import CardDetails from "../CardDetails/CardDetails";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Statistics from "../Statistics/Statistics.jsx";
+
 import Hero from "../Hero/Hero";
 
 const Cards = ({ totalDonation, totalDonated }) => {
@@ -11,10 +11,9 @@ const Cards = ({ totalDonation, totalDonated }) => {
   const [yourDonation, setYourDonation] = useState(0);
   const [totalDonationAmount, setTotalDonationAmount] = useState(0);
   const [donations, setDonations] = useState([]);
-  const [filteredCards, setFilteredCards] = useState([]); // Initially, set it to an empty array
+  const [filteredCards, setFilteredCards] = useState([]);
 
   useEffect(() => {
-    // Fetch card data
     fetch("data.json")
       .then((response) => response.json())
       .then((data) => {
@@ -35,14 +34,9 @@ const Cards = ({ totalDonation, totalDonated }) => {
   }, []);
 
   const handleDonateClick = (card) => {
-    // Donation handling code remains the same
-    // ...
-
-    // Make sure to update filteredCards if needed
     setFilteredCards(showCards);
   };
 
-  // Function to handle search
   const handleSearch = (searchQuery, categoryQuery) => {
     let filtered = [...showCards];
 
