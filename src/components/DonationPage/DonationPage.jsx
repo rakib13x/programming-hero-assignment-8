@@ -37,7 +37,7 @@ const DonationPage = () => {
   };
 
   return (
-    <div className="md:max-w-[1400px] max-w-[600px] m-auto w-full mt-10 px-14 ">
+    <div className="md:max-w-[1400px] max-w-[600px] m-auto w-full pt-[240px] px-14 space-y-6">
       <div
         className="hero h-[700px] relative"
         style={{
@@ -57,9 +57,18 @@ const DonationPage = () => {
             </button>
           </div>
         </div>
-      </div>
 
-      <ToastContainer />
+        <ToastContainer />
+      </div>
+      <p>
+        <h2
+          className="font-bold text-3xl"
+          style={{ color: cardData.text_button_bg_color }}
+        >
+          {cardData.title}
+        </h2>
+      </p>
+      <p>{cardData.description}</p>
     </div>
   );
 };

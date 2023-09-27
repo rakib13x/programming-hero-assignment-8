@@ -62,7 +62,7 @@ const Cards = ({ totalDonation, totalDonated }) => {
   };
 
   return (
-    <div className="md:max-w-[1400px] md:px-20 max-w-[600px] w-full mt-6 mb-6 sm:flex flex-col items-center">
+    <div className=" flex justify-center lg:pl-[280px] lg:gap-20 md:max-w-[1400px]  max-w-[600px] w-full mt-6 mb-6 md:pl-20 sm:flex flex-col items-center">
       <Hero onSearch={handleSearch} />
       <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-8 pt-20">
         {filteredCards.map((card) => (

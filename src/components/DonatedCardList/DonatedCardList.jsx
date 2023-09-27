@@ -47,17 +47,29 @@ const DonatedCardList = ({ cardList }) => {
         </figure>
         <div className="card-body">
           <button
-            className="card-actions justify-center items-center h-[25px] w-[64px] rounded text-gray-100"
             style={{
-              background: cardList.category_bg_color,
+              backgroundColor: cardList.card_bg_color,
+              color: cardList.text_button_bg_color,
             }}
+            className=" justify-center items-center h-[25px] w-[64px] rounded"
           >
             {cardList.category}
           </button>
-          <h2 className="card-title">{cardList.title}</h2>
+          <h2
+            className="card-title"
+            style={{
+              color: cardList.text_button_bg_color,
+            }}
+          >
+            {cardList.title}
+          </h2>
           <div className="card-actions justify-start">
             <button
-              className="justify-center items-center w-[141px] h-[40px] bg-red-500 rounded text-white"
+              style={{
+                backgroundColor: cardList.card_bg_color,
+                color: cardList.text_button_bg_color,
+              }}
+              className="justify-center items-center w-[141px] h-[40px] rounded "
               onClick={() => handleViewDetailsClick(cardList.id)}
             >
               View Details
